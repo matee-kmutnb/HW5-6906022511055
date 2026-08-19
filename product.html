@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Acoustics — Products</title>
+  <meta name="description" content="สินค้า AURA Acoustics — ดูรายการสินค้าและรายละเอียดของเรา">
+  <link rel="stylesheet" href="css/gridstyle.css">
+</head>
+
+<body>
+  <div class="grid-wrapper">
+
+    <header class="site-header">
+      <img src="images/header.jpg" alt="AURA Acoustics Banner">
+    </header>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html" id="nav-home">Home</a></li>
+        <li><a href="product.html" class="active" id="nav-products">Products</a></li>
+      </ul>
+    </nav>
+
+    <div class="body-grid">
+
+      <main class="site-main">
+
+        <div class="content-block" id="product-1">
+          <h2>Our Catalog</h2>
+          <p>Browse products and details below.</p>
+          <img src="images/product1.jpg" alt="AURA X1 Pro Headphone">
+        </div>
+
+        <div class="content-block" id="product-2">
+          <h2>Product Name</h2>
+          <p>Short description, price, and actions (add to cart, view details).</p>
+          <img src="images/product2.jpg" alt="AURA Neon Void Edition">
+        </div>
+
+      </main>
+
+      <aside class="site-sidebar">
+        <h2>สมัครสมาชิก</h2>
+
+        <form id="member-form" onsubmit="handleSubmit(event)">
+
+          <div class="form-group">
+            <label for="first-name">ชื่อ</label>
+            <input type="text" id="first-name" name="first-name" placeholder="ชื่อจริง" required>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">นามสกุล</label>
+            <input type="text" id="last-name" name="last-name" placeholder="นามสกุล" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">อีเมล</label>
+            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" placeholder="อย่างน้อย 8 ตัวอักษร" minlength="8"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">ยืนยันรหัสผ่าน</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="ยืนยันรหัสผ่าน" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">เบอร์โทรศัพท์</label>
+            <input type="tel" id="phone" name="phone" placeholder="083-xxx-xxxx">
+          </div>
+
+          <div class="form-group">
+            <label>เพศ</label>
+            <div class="radio-group">
+              <label><input type="radio" name="gender" id="gender-male" value="male"> ชาย</label>
+              <label><input type="radio" name="gender" id="gender-female" value="female"> หญิง</label>
+              <label><input type="radio" name="gender" id="gender-other" value="other"> ไม่ระบุ</label>
+            </div>
+          </div>
+
+          <div class="checkbox-inline">
+            <label><input type="checkbox" id="chk-news" name="subscribe" value="news"> รับข่าวสาร</label>
+            <label><input type="checkbox" id="chk-promo" name="subscribe" value="promo"> โปรโมชั่น</label>
+            <label><input type="checkbox" id="chk-event" name="subscribe" value="event"> กิจกรรม</label>
+          </div>
+
+          <div class="form-group">
+            <label for="member-type">ประเภทสมาชิก</label>
+            <select id="member-type" name="member-type" required>
+              <option value="normal" selected>ธรรมดา</option>
+              <option value="premium">พรีเมียม</option>
+              <option value="vip">VIP</option>
+            </select>
+          </div>
+
+          <label class="terms-row">
+            <input type="checkbox" id="terms" name="terms" required>
+            ยอมรับข้อกำหนดและเงื่อนไข
+          </label>
+
+          <button type="submit" class="btn-submit" id="btn-register">สมัครสมาชิก</button>
+
+          <p class="form-note">เราจะเก็บข้อมูลของคุณเป็นความลับ</p>
+
+        </form>
+      </aside>
+
+    </div>
+
+    <footer class="site-footer">
+      <img src="images/footer.jpg" alt="AURA Acoustics Footer">
+    </footer>
+
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const pw = document.getElementById('password').value;
+      const cpw = document.getElementById('confirm-password').value;
+      if (pw !== cpw) {
+        alert('รหัสผ่านไม่ตรงกัน กรุณากรอกใหม่');
+        return;
+      }
+      const name = document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value;
+      const typeMap = { normal: 'ธรรมดา', premium: 'พรีเมียม', vip: 'VIP' };
+      const type = typeMap[document.getElementById('member-type').value];
+      alert('✅ สมัครสมาชิกสำเร็จ!\n\nยินดีต้อนรับ คุณ' + name + '\nประเภทสมาชิก: ' + type);
+      e.target.reset();
+    }
+  </script>
+</body>
+
+</html>
